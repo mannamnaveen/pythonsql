@@ -1,0 +1,54 @@
+docker version
+docker info
+
+
+docker images
+docker ps
+docker ps -a
+
+docker hello-world
+
+docker search mysql
+
+docker pull mysql
+
+docker run --name mysqlsrvr -e MYSQL_ROOT_PASSWORD=PASSWORD -d mysql/mysql-server:latest
+docker run --name guestbook -e MYSQL_ROOT_USERNAE=root -e MYSQL_ROOT_PASSWORD=Secret -p 3306:3306 -d mysql/mysql-server:latest
+
+docker exec -it mysqlsrvr mysql -uroot -p 
+
+show databases;
+
+CREATE USER 'aleev'@'%' IDENTIFIED BY 'Secret';
+
+GRANT ALL PRIVILEGES ON *.* TO 'aleev'@'%';
+
+
+To grant access from a machine with IP 10.8.0.5 you would run:
+CREATE USER 'newuser'@'10.8.0.5' IDENTIFIED BY 'user_password';
+
+To create a user that can connect from any host, use the '%' wildcard as a host part:
+CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+
+
+CREATE USER 'mona'@'localhost' IDENTIFIED BY 'Secret';
+GRANT ALL PRIVILEGES ON guest_book.* TO 'mona'@'localhost';
+
+<!-- Database excercise -->
+
+<!-- Create a new database -->
+create database shirts_db;
+
+<!-- Use the database -->
+use shirts_db;
+
+<!-- Create a shirts table in the database -->
+CREATE TABLE SHIRTS
+(
+shirt_id int auto_increment PRIMARY KEY,
+article varchar(50) NOT NULL,
+color varchar(50) NOT NULL,
+shirt_size varchar(10) NOT NULL,
+last_worn int NOT NULL
+);
+
